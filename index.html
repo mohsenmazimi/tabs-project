@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&family=Titillium+Web:wght@200;300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title></title>
+  </head>
+  <body>
+    <div class="main">
+      <div>
+        <h1>about</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
+          aperiam!
+        </p>
+      </div>
+
+      <div class="row">
+        <figure>
+          <img src="hero-bcg.jpeg" />
+        </figure>
+        <div class="main_tab">
+          <div class="header_tabs">
+            <span class="bg-white" onclick="changeTab(this)">history</span>
+            <span onclick="changeTab(this)">vision</span>
+            <span onclick="changeTab(this)">goals</span>
+          </div>
+          <div class="main_tabs">
+            <h2>history</h2>
+            <p>
+              I'm baby wolf pickled schlitz try-hard normcore marfa man bun
+              mumblecore vice pop-up XOXO lomo kombucha glossier bicycle rights.
+              Umami kinfolk salvia jean shorts offal venmo. Knausgaard tilde
+              try-hard, woke fixie banjo man bun. Small batch tumeric mustache
+              tbh wayfarers 8-bit shaman chartreuse tacos. Viral direct trade
+              hoodie ugh chambray, craft beer pork belly flannel tacos
+              single-origin coffee art party migas plaid pop-up.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let data = {
+        history: {
+          title: "history",
+          description:
+            "I'm baby wolf pickled schlitz try-hard normcore marfa man bun mumblecore vice pop-up XOXO lomo kombucha glossier bicycle rights. Umami kinfolk salvia jean shorts offal venmo. Knausgaard tilde try-hard, woke fixie banjo man bun. Small batch tumeric mustache tbh wayfarers 8-bit shaman chartreuse tacos. Viral direct trade hoodie ugh chambray, craft beer pork belly flannel tacos single-origin coffee art party migas plaid pop-up.",
+        },
+
+        vision: {
+          title: "vision",
+          description:
+            "Man bun PBR&B keytar copper mug prism, hell of helvetica. Synth crucifix offal deep v hella biodiesel. Church-key listicle polaroid put a bird on it chillwave palo santo enamel pin, tattooed meggings franzen la croix cray. Retro yr aesthetic four loko tbh helvetica air plant, neutra palo santo tofu mumblecore. Hoodie bushwick pour-over jean shorts chartreuse shabby chic. Roof party hammock master cleanse pop-up truffaut, bicycle rights skateboard affogato readymade sustainable deep v live-edge schlitz narwhal.",
+        },
+        goals: {
+          title: "goals",
+          description:
+            "Chambray authentic truffaut, kickstarter brunch taxidermy vape heirloom four dollar toast raclette shoreditch church-key. Poutine etsy tote bag, cred fingerstache leggings cornhole everyday carry blog gastropub. Brunch biodiesel sartorial mlkshk swag, mixtape hashtag marfa readymade direct trade man braid cold-pressed roof party. Small batch adaptogen coloring book heirloom. Letterpress food truck hammock literally hell of wolf beard adaptogen everyday carry. Dreamcatcher pitchfork yuccie, banh mi salvia venmo photo booth quinoa chicharrones.",
+        },
+      };
+
+      function changeTab(select) {
+        select.classList.toggle("bg-white");
+        let headerTabs = document.querySelector(".header_tabs");
+        headerTabs.setAttribute("data-tab", select.innerText);
+        let selectedTab = headerTabs.getAttribute("data-tab");
+        let spanTab = document.querySelectorAll(".header_tabs>span");
+        spanTab.forEach(function (params) {
+          if (params.innerText !== selectedTab) {
+            params.classList.remove("bg-white");
+          }
+        });
+        
+        
+        
+        let mainTabs = document.querySelector(".main_tabs");
+        mainTabs.innerHTML = `
+                <h2>${data[selectedTab.toLowerCase()].title}</h2>
+                <p>${data[selectedTab.toLowerCase()].description}</p>
+        `;
+      }
+    </script>
+  </body>
+</html>
